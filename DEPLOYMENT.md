@@ -1,5 +1,7 @@
 # Deploy to Vercel via GitHub
 
+> **Quick start:** See **[GO-LIVE.md](./GO-LIVE.md)** for a simple free hosting checklist.
+
 This guide deploys the **Support Shift Tracker** (React frontend + Express API) on Vercel with a cloud PostgreSQL database.
 
 > **Note:** Vercel serverless cannot keep a local Excel file. Use **Export Excel** in the app for downloads. Auto-sync to disk is disabled on Vercel.

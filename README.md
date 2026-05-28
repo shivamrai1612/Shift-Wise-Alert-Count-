@@ -83,9 +83,11 @@ Base URL: `/api`
 | GET | `/shifts/export/excel` | Download Excel |
 | GET | `/shifts/export/pdf` | Download PDF |
 
-## Deploy to Vercel (GitHub)
+## Go live for free
 
-See **[DEPLOYMENT.md](./DEPLOYMENT.md)** for step-by-step instructions (GitHub + Vercel + Neon PostgreSQL).
+See **[GO-LIVE.md](./GO-LIVE.md)** — deploy free on **Vercel + Neon + GitHub** (about 15 minutes).
+
+Also: [DEPLOYMENT.md](./DEPLOYMENT.md) for technical details.
 
 ## Project Structure
 
