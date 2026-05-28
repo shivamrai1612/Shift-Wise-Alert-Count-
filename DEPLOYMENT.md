@@ -23,10 +23,10 @@ git add .
 git commit -m "Prepare for Vercel deployment"
 ```
 
-Create a new repository on GitHub (e.g. `support-shift-tracker`), then:
+Repository: [https://github.com/shivamrai1612/Shift-Wise-Alert-Count-](https://github.com/shivamrai1612/Shift-Wise-Alert-Count-)
 
 ```powershell
-git remote add origin https://github.com/YOUR_USERNAME/support-shift-tracker.git
+git remote add origin https://github.com/shivamrai1612/Shift-Wise-Alert-Count-.git
 git branch -M main
 git push -u origin main
 ```
