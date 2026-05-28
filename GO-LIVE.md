@@ -39,15 +39,13 @@ Your live URL will look like: `https://shift-wise-alert-count.vercel.app`
 
 1. Vercel dashboard → **Add New** → **Project**.
 2. Find **Shift-Wise-Alert-Count-** → **Import**.
-3. **Configure Project** — confirm these match `vercel.json`:
+3. **Framework Preset** must be **Services** (Vercel detects `frontend` + `backend` folders).
+4. `vercel.json` in the repo is already configured — click **Refresh** if you see a yellow banner, then deploy.
 
-   | Setting | Value |
-   |---------|--------|
-   | Framework Preset | Other |
-   | Root Directory | `./` (default) |
-   | Build Command | `npm run build` |
-   | Output Directory | `frontend/dist` |
-   | Install Command | `npm run install:all` |
+   | Service | Folder | URL |
+   |---------|--------|-----|
+   | frontend | `frontend` | `/` |
+   | backend | `backend` | `/api` |
 
 ### C. Environment variables (before Deploy)
 
@@ -101,6 +99,7 @@ Vercel redeploys automatically (if GitHub is connected).
 
 | Problem | Fix |
 |---------|-----|
+| “vercel.json required for multiple services” | Pull latest code — `vercel.json` must include `experimentalServices`. Set Framework to **Services**. |
 | Build fails on Vercel | Check **Deployments → Build Logs**. Ensure `DATABASE_URL` is set. |
 | `DATABASE_URL is required` | Add env var in Vercel → **Redeploy**. |
 | API 500 / no data | Run `sql/schema.sql` in Neon SQL Editor. |

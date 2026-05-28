@@ -24,7 +24,10 @@ export async function createApp() {
   );
   app.use(express.json());
 
-  app.get('/api/health', (_req, res) => {
+  // Local dev: /api/*  |  Vercel Services (routePrefix /api): /health, /shifts, etc.
+  const apiBase = process.env.VERCEL === '1' ? '' : '/api';
+
+  app.get(`${apiBase}/health`, (_req, res) => {
     res.json({
       status: 'ok',
       database: dbMode,
@@ -33,8 +36,8 @@ export async function createApp() {
     });
   });
 
-  app.use('/api/shifts', shiftsRouter);
-  app.use('/api/excel', excelRouter);
+  app.use(`${apiBase}/shifts`, shiftsRouter);
+  app.use(`${apiBase}/excel`, excelRouter);
 
   app.use((err, _req, res, _next) => {
     console.error(err);
