@@ -1,0 +1,1 @@
+-- No sample data. Add your own entries via the app.
