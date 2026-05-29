@@ -1,4 +1,5 @@
 import ExcelJS from 'exceljs';
+import { formatIstNow } from './ist.js';
 import PDFDocument from 'pdfkit';
 import { EXCEL_HEADERS, shiftToExcelRow } from './excelSync.js';
 
@@ -35,7 +36,7 @@ export function buildPdfStream(shifts, res) {
 
   doc.fontSize(18).text('Support Shift Tracker — Report', { align: 'center' });
   doc.moveDown();
-  doc.fontSize(10).text(`Generated: ${new Date().toLocaleString()}`, { align: 'center' });
+  doc.fontSize(10).text(`Generated: ${formatIstNow()}`, { align: 'center' });
   doc.moveDown(1.5);
 
   const colWidths = [30, 70, 55, 35, 35, 35, 35, 35, 35, 55, 50, 50, 55, 55];

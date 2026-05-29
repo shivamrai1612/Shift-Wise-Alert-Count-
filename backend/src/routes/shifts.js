@@ -4,6 +4,7 @@ import { SHIFT_NAMES } from '../constants.js';
 import { rowToShift, validateShiftBody, bodyToDbColumns } from '../utils/shiftHelpers.js';
 import { buildExcelBuffer, buildPdfStream } from '../utils/export.js';
 import { syncExcelFromDatabaseSafe } from '../utils/excelSync.js';
+import { getIstDateString } from '../utils/ist.js';
 
 const router = Router();
 
@@ -247,7 +248,7 @@ router.post('/', async (req, res, next) => {
       INSERT INTO shift_entries (
         shift_name, p0_count, p1_count, p2_count, p3_count, p4_count, p5_count,
         escalated_count, silenced_count, entry_date
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, COALESCE($10::date, CURRENT_DATE))
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
       RETURNING *
       `,
       [
@@ -260,7 +261,7 @@ router.post('/', async (req, res, next) => {
         Number(p5Count),
         Number(escalatedCount),
         Number(silencedCount),
-        req.body.entryDate || null,
+        req.body.entryDate || getIstDateString(),
       ]
     );
 

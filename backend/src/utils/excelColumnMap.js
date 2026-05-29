@@ -1,3 +1,5 @@
+import { formatIstDate, formatIstDateTime } from './ist.js';
+
 /** Map template header text (lowercase) → shift field key */
 const HEADER_ALIASES = {
   id: 'id',
@@ -52,7 +54,7 @@ export function getShiftFieldValue(shift, field) {
   const values = {
     id: shift.id,
     shiftName: shift.shiftName,
-    entryDate: typeof shift.entryDate === 'string' ? shift.entryDate.slice(0, 10) : shift.entryDate,
+    entryDate: formatIstDate(shift.createdAt || shift.entryDate),
     p0Count: shift.p0Count,
     p1Count: shift.p1Count,
     p2Count: shift.p2Count,
@@ -62,8 +64,8 @@ export function getShiftFieldValue(shift, field) {
     totalAlerts: shift.totalAlerts,
     escalatedCount: shift.escalatedCount,
     silencedCount: shift.silencedCount,
-    createdAt: shift.createdAt ? new Date(shift.createdAt).toLocaleString() : '',
-    updatedAt: shift.updatedAt ? new Date(shift.updatedAt).toLocaleString() : '',
+    createdAt: formatIstDateTime(shift.createdAt),
+    updatedAt: formatIstDateTime(shift.updatedAt),
   };
   return values[field];
 }
