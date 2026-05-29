@@ -1,4 +1,4 @@
-import { formatDate, formatDateTime } from '../utils/format';
+import { formatRecordedDate, formatDateTime } from '../utils/format';
 
 export default function ShiftTable({ shifts, onEdit, onDelete, deletingId }) {
   if (!shifts.length) {
@@ -29,7 +29,7 @@ export default function ShiftTable({ shifts, onEdit, onDelete, deletingId }) {
           <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
             {shifts.map((s) => (
               <tr key={s.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/50">
-                <td className="px-3 py-2.5 whitespace-nowrap">{formatDate(s.entryDate)}</td>
+                <td className="px-3 py-2.5 whitespace-nowrap">{formatRecordedDate(s.createdAt)}</td>
                 <td className="px-3 py-2.5 font-medium">{s.shiftName}</td>
                 <td className="px-3 py-2.5 text-center tabular-nums text-xs">
                   {s.p0Count}/{s.p1Count}/{s.p2Count}/{s.p3Count}/{s.p4Count}/{s.p5Count}
@@ -77,7 +77,7 @@ export default function ShiftTable({ shifts, onEdit, onDelete, deletingId }) {
             <div className="flex items-start justify-between gap-2">
               <div>
                 <p className="font-semibold">{s.shiftName}</p>
-                <p className="text-xs text-slate-500">{formatDate(s.entryDate)}</p>
+                <p className="text-xs text-slate-500">{formatRecordedDate(s.createdAt)}</p>
               </div>
               <p className="text-2xl font-bold tabular-nums text-brand-600">{s.totalAlerts}</p>
             </div>

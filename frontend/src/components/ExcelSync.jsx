@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { api, downloadBlob } from '../api/client';
+import { formatDateTime } from '../utils/format';
 
 export default function ExcelSync({ refreshKey }) {
   const [status, setStatus] = useState(null);
@@ -66,9 +67,7 @@ export default function ExcelSync({ refreshKey }) {
   if (!status?.enabled) return null;
 
   const last = status.lastSync;
-  const syncedLabel = last?.syncedAt
-    ? new Date(last.syncedAt).toLocaleString()
-    : 'Not synced yet';
+  const syncedLabel = last?.syncedAt ? formatDateTime(last.syncedAt) : 'Not synced yet';
 
   return (
     <div className="rounded-xl border border-emerald-200 bg-emerald-50/80 p-4 dark:border-emerald-900 dark:bg-emerald-950/40">
